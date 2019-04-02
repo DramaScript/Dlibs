@@ -116,9 +116,14 @@ public class HttpRxActivity extends ImpMvpActivity<HttpPresenter> implements Htt
 
     @Override
     public void loadSuccess(List<TestBean> result) {
-        lists.addAll(result);
-        refreshLayout.finishLoadmore();
-        adapter.notifyDataSetChanged();
+        if (result.size()>0){
+            lists.addAll(result);
+            refreshLayout.finishLoadmore();
+            adapter.notifyDataSetChanged();
+        }else {
+            page -- ;
+        }
+
     }
 
     @Override
